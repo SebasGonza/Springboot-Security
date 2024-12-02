@@ -2,6 +2,7 @@ package com.app.controller;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,16 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 @PreAuthorize("isAuthenticated()")
 public class TestAuthController {
 
-    @PreAuthorize("permitAll()")
-    @GetMapping("/hello")
+/*
+    @PreAuthorize("hasAuthority('CREATE')")
+*/
+    @GetMapping("/get")
     public String hello(){
         return "Hello World";
     }
 
-    @PreAuthorize("hasAuthority('CREATE')")
-    @GetMapping("/hello-secured")
+    /*@PreAuthorize("hasAuthority('CREATE')")*/
+    @PostMapping("/post")
     public String helloSecured(){
-        return "Hello World Secured";
+        return "Hello World 420";
     }
 
 }
